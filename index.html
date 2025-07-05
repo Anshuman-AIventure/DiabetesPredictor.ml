@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Predictor</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.25); /* adjust opacity as needed */
+            z-index: 0;
+        }
+        .container {
+            background: rgba(255,255,255,0.92);
+            padding: 40px 30px 30px 30px;
+            border-radius: 18px;
+            max-width: 420px;
+            margin: 70px auto;
+            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+            position: relative;
+            z-index: 1;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2.3em;
+            margin-bottom: 30px;
+            color: #333;
+            letter-spacing: 1px;
+        }
+        label {
+            font-weight: 500;
+            margin-top: 12px;
+            display: block;
+            color: #444;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 18px 0;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 1em;
+            background: #f9f9f9;
+        }
+        .predict-btn, input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.3em;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            margin: 30px auto 0 auto;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .predict-btn:hover, input[type="submit"]:hover {
+            background: #0056b3;
+        }
+        h3 {
+            text-align: center;
+            font-size: 1.5em;
+            color: #007bff;
+            margin-top: 25px;
+        }
+        @media (max-width: 500px) {
+            .container {
+                max-width: 95vw;
+                padding: 20px 5vw;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body style="background-image: url('{{ url_for('static', filename='bg1.jpg') }}');">
+    <div class="container">
+        <h2>Diabetes Prediction Form</h2>
+        <form method="post">
+            <label>Pregnancies: <input type="number" name="Pregnancies" step="1" required></label>
+            <label>Glucose: <input type="number" name="Glucose" step="any" required></label>
+            <label>BloodPressure: <input type="number" name="BloodPressure" step="any" required></label>
+            <label>SkinThickness: <input type="number" name="SkinThickness" step="any" required></label>
+            <label>Insulin: <input type="number" name="Insulin" step="any" required></label>
+            <label>BMI: <input type="number" name="BMI" step="any" required></label>
+            <label>DiabetesPedigreeFunction: <input type="number" name="DiabetesPedigreeFunction" step="any" required></label>
+            <label>Age: <input type="number" name="Age" step="1" required></label>
+            <input type="submit" value="Predict" class="predict-btn">
+        </form>
+        {% if prediction %}
+            <h3>Prediction: {{ prediction }}</h3>
+        {% endif %}
+    </div>
+    <footer style="text-align:center;color:#888;margin-top:30px;">
+        &copy; 2025 Diabetes Predictor
+    </footer>
+</body>
+</html>
