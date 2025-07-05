@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+import streamlit as st
+st.title("Diabetes Predictor")
 import numpy as np
 import joblib
 app = Flask(__name__)
