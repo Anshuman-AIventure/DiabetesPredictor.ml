@@ -1,2 +1,3 @@
 joblib
 scaler.pkl
+svm_diabetes_model.pkl
